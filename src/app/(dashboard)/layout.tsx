@@ -88,7 +88,7 @@ const DashboardLayout = ({ children }: AppLayoutProps) => {
           </header>
 
           {/* Main Content */}
-          <main className="flex-1 p-6 bg-muted">{children}</main>
+          <main className="flex-1 p-6 px-52 bg-muted">{children}</main>
         </div>
       </div>
     </SidebarProvider>
