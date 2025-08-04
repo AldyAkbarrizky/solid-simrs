@@ -176,11 +176,11 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
     switch (currentStep) {
       case 1:
         return (
-          <div className="space-y-6">
+          <div className="space-y-6 text-[16px]">
             <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
               {/* Photo Upload */}
               <div className="space-y-4">
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label>Foto Pasien</Label>
                   <div className="border-2 border-dashed border-border rounded-lg p-8 text-center">
                     <Upload className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
@@ -196,9 +196,9 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
               </div>
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+              <div className="space-y-8">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="fullName">
                       Nama Lengkap <span className="text-destructive">*</span>
                     </Label>
@@ -208,7 +208,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       className="border-gray-300 w-full"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="nickname">Nama Panggilan</Label>
                     <Input
                       id="nickname"
@@ -218,8 +218,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="idType">Tipe Identitas</Label>
                     <Select>
                       <SelectTrigger className="w-full border-gray-300">
@@ -232,7 +232,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="idNumber">
                       Nomor Identitas{" "}
                       <span className="text-destructive">*</span>
@@ -245,7 +245,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="kkNumber">No. Kartu Keluarga</Label>
                   <Input
                     id="kkNumber"
@@ -254,8 +254,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="birthPlace">Tempat Lahir</Label>
                     <Input
                       id="birthPlace"
@@ -263,7 +263,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       className="border-gray-300 w-full"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label>Tanggal Lahir</Label>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -293,8 +293,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="gender">
                       Jenis Kelamin <span className="text-destructive">*</span>
                     </Label>
@@ -308,7 +308,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="bloodType">Golongan Darah</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -324,8 +324,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="religion">Agama</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -341,7 +341,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="maritalStatus">Status Pernikahan</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -357,7 +357,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="education">Pendidikan</Label>
                   <Select>
                     <SelectTrigger className="border-gray-300 w-full">
@@ -382,20 +382,20 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
         return (
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="space-y-8">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="address">
                     Alamat Lengkap <span className="text-destructive">*</span>
                   </Label>
                   <Textarea
                     id="address"
                     placeholder="Masukkan alamat lengkap"
-                    className="min-h-[123px] border-gray-300 w-full"
+                    className="min-h-[139px] border-gray-300 w-full"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="province">Provinsi</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -408,7 +408,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="city">Kota/Kabupaten</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -423,8 +423,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="district">Kecamatan</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -437,7 +437,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2">
+                  <div className="flex flex-col gap-2">
                     <Label htmlFor="village">Kelurahan/Desa</Label>
                     <Select>
                       <SelectTrigger className="border-gray-300 w-full">
@@ -453,8 +453,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="space-y-8">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="postalCode">Kode Pos</Label>
                   <Input
                     id="postalCode"
@@ -463,7 +463,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="phone">
                     No. Handphone <span className="text-destructive">*</span>
                   </Label>
@@ -474,7 +474,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
@@ -492,8 +492,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
         return (
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="space-y-8">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="motherName">Nama Ibu Kandung</Label>
                   <Input
                     id="motherName"
@@ -506,8 +506,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   <CardHeader>
                     <CardTitle className="text-lg">Kontak Darurat</CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="space-y-2">
+                  <CardContent className="space-y-8">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="emergencyName">Nama Kontak Darurat</Label>
                       <Input
                         id="emergencyName"
@@ -515,7 +515,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                         className="border-gray-300 w-full"
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="relationship">Hubungan</Label>
                       <Select>
                         <SelectTrigger className="border-gray-300 w-full">
@@ -530,7 +530,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="emergencyPhone">No. Handphone</Label>
                       <Input
                         id="emergencyPhone"
@@ -542,8 +542,8 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                 </Card>
               </div>
 
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="space-y-8">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="occupation">Pekerjaan</Label>
                   <Select>
                     <SelectTrigger className="border-gray-300 w-full">
@@ -559,7 +559,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                   </Select>
                 </div>
 
-                <div className="space-y-2">
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="company">Nama Perusahaan</Label>
                   <Input
                     id="company"
@@ -600,7 +600,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                     <DialogTitle>Tambah Data Penjamin</DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4">
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="insuranceType">Tipe Penjamin</Label>
                       <Select
                         value={newInsurance.type}
@@ -624,7 +624,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </Select>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="insuranceCompany">
                         Nama Perusahaan/Asuransi
                       </Label>
@@ -642,7 +642,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="cardNumber">No. Kartu</Label>
                       <Input
                         id="cardNumber"
@@ -658,7 +658,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label htmlFor="insuranceClass">Kelas</Label>
                       <Select
                         value={newInsurance.class}
@@ -678,7 +678,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                       </Select>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
                       <Label>Tanggal Kadaluarsa</Label>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -828,9 +828,9 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
       </div>
 
       {/* Form with Steps */}
-      <div className="flex gap-8">
+      <div className="flex">
         {/* Step Sidebar */}
-        <Card className="w-80 h-fit bg-card border-border shadow-card">
+        <Card className="w-64 h-fit bg-card border-border shadow-card">
           <CardContent className="p-6">
             <nav className="relative">
               {/* Background connecting line */}
@@ -865,7 +865,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                           onClick={() => isClickable && goToStep(step.id)}
                           disabled={!isClickable}
                           className={cn(
-                            "flex items-center justify-center w-12 h-12 rounded-full text-sm font-medium transition-all border-2 bg-background",
+                            "flex items-center justify-center w-12 h-12 rounded-full text-[16px] font-medium transition-all border-2 bg-background",
                             isActive &&
                               "bg-primary text-primary-foreground border-primary shadow-sm",
                             isCompleted &&
@@ -902,7 +902,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                         >
                           <div className="flex items-center gap-2">
                             <step.icon className="w-4 h-4" />
-                            <span className="text-sm font-medium">
+                            <span className="text-[16px] font-medium">
                               {step.name}
                             </span>
                           </div>
@@ -917,7 +917,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
         </Card>
 
         {/* Form Content */}
-        <div className="flex-1 mx-12">
+        <div className="flex-1 mx-6">
           <Card className="border-border bg-card shadow-card">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -929,7 +929,7 @@ const PatientForm = ({ patient }: { patient?: Patient }) => {
                 {steps.find((s) => s.id === currentStep)?.name}
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent className="p-6 text-[16px]">
               {renderStepContent()}
 
               {/* Step Navigation */}
