@@ -31,6 +31,7 @@ const mockPatient = {
   insurances: [
     {
       id: "ins_001",
+      insuranceId: "1",
       type: "bpjs",
       company: "BPJS Kesehatan",
       cardNumber: "0001234567890",
@@ -39,6 +40,7 @@ const mockPatient = {
     },
     {
       id: "ins_002",
+      insuranceId: "2",
       type: "asuransi",
       company: "Prudential",
       cardNumber: "PRU987654",
