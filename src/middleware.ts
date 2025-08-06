@@ -2,20 +2,23 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export default async function middleware(request: NextRequest) {
-  console.log("Middleware running for:", request.nextUrl.pathname);
-
-  const isLoggedIn = request.cookies.get("isLoggedIn")?.value === "true";
+  // 1. Cek cookie 'token' yang kita set setelah login berhasil
+  const token = request.cookies.get("token")?.value;
   const isLoginPage = request.nextUrl.pathname === "/login";
 
-  console.log("IsLoggedIn:", isLoggedIn, "IsLoginPage:", isLoginPage);
+  // 2. Logika BARU: Jika user sudah login (punya token) dan mencoba mengakses halaman login
+  if (token && isLoginPage) {
+    // Arahkan mereka ke halaman utama (dashboard)
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 
-  // Jika user belum login dan bukan di halaman login, redirect ke login
-  if (!isLoggedIn && !isLoginPage) {
-    console.log("Redirecting to login");
+  // 3. Logika LAMA (sedikit dimodifikasi): Jika user belum login dan mencoba mengakses halaman selain login
+  if (!token && !isLoginPage) {
+    // Arahkan mereka ke halaman login
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  console.log("Allowing request to continue");
+  // Jika tidak ada kondisi di atas yang terpenuhi, izinkan request
   return NextResponse.next();
 }
 

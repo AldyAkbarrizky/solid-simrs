@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { deleteCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -21,12 +22,7 @@ interface AppLayoutProps {
 
 const DashboardLayout = ({ children }: AppLayoutProps) => {
   const router = useRouter();
-  const handleLogout = () => {
-    deleteCookie("isLoggedIn");
-    localStorage.removeItem("userInfo");
-    router.push("/login");
-  };
-
+  const { logout } = useAuth();
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
@@ -78,7 +74,7 @@ const DashboardLayout = ({ children }: AppLayoutProps) => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-pointer text-destructive focus:text-destructive"
-                  onClick={handleLogout}
+                  onClick={logout}
                 >
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Logout</span>

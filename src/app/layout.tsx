@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Solid - Sistem Manajemen Informasi RS",
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <TooltipProvider>
-          {children}
-          <Toaster />
-        </TooltipProvider>
+        <AuthProvider>
+          <TooltipProvider>
+            {children}
+            <Toaster />
+          </TooltipProvider>
+        </AuthProvider>
       </body>
     </html>
   );

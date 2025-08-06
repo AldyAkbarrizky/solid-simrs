@@ -25,6 +25,8 @@ import {
 } from "@/components/ui/form";
 import { loginSchema, type LoginFormData } from "@/schemas/login";
 import { setCookie } from "cookies-next";
+import api from "@/services/api";
+import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
   const router = useRouter();
@@ -35,6 +37,7 @@ const Login = () => {
       password: "",
     },
   });
+  const { login } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -44,27 +47,41 @@ const Login = () => {
     setError("");
     setIsLoading(true);
 
-    setTimeout(() => {
-      if (data.username === "admin" && data.password === "admin123") {
-        setCookie("isLoggedIn", "true", { path: "/" });
+    // DEMO LOGIN (FOR SIMULATION ONLY)
+    // setTimeout(() => {
+    //   if (data.username === "admin" && data.password === "admin123") {
+    //     setCookie("isLoggedIn", "true", { path: "/" });
 
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({
-            name: "Dr. Admin",
-            email: "admin@rumahsakit.com",
-            role: "Administrator",
-          })
-        );
+    //     localStorage.setItem(
+    //       "userInfo",
+    //       JSON.stringify({
+    //         name: "Dr. Admin",
+    //         email: "admin@rumahsakit.com",
+    //         role: "Administrator",
+    //       })
+    //     );
 
-        router.push("/");
-      } else {
-        setError(
-          "Username atau password salah. Gunakan admin/admin123 untuk demo."
-        );
-      }
+    //     router.push("/");
+    //   } else {
+    //     setError(
+    //       "Username atau password salah. Gunakan admin/admin123 untuk demo."
+    //     );
+    //   }
+    //   setIsLoading(false);
+    // }, 1000);
+
+    try {
+      const response = await api.post("/auth/login", data);
+      const { token, user } = response.data.data;
+      login(token, user);
+      router.push("/");
+    } catch (err: any) {
+      const message =
+        err.response?.data?.message || "Terjadi kesalahan pada server.";
+      setError(message);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
